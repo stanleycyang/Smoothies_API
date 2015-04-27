@@ -1,3 +1,3 @@
 class Smoothie < ActiveRecord::Base
-  has_many :fruits
+  has_and_belongs_to_many :fruits
 end

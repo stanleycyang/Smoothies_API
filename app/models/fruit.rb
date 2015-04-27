@@ -1,3 +1,4 @@
 class Fruit < ActiveRecord::Base
-  belongs_to :fruit
+  has_and_belongs_to_many :smoothies
+  validates :name, uniqueness: true
 end

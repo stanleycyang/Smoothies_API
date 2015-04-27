@@ -11,19 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427200605) do
+ActiveRecord::Schema.define(version: 20150427214819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "fruits", force: :cascade do |t|
     t.string   "name"
-    t.integer  "smoothie_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "fruits", ["smoothie_id"], name: "index_fruits_on_smoothie_id", using: :btree
+  create_table "fruits_smoothies", id: false, force: :cascade do |t|
+    t.integer "fruit_id"
+    t.integer "smoothie_id"
+  end
+
+  add_index "fruits_smoothies", ["fruit_id"], name: "index_fruits_smoothies_on_fruit_id", using: :btree
+  add_index "fruits_smoothies", ["smoothie_id"], name: "index_fruits_smoothies_on_smoothie_id", using: :btree
 
   create_table "smoothies", force: :cascade do |t|
     t.string   "name"

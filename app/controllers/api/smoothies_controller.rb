@@ -7,7 +7,7 @@ module Api
 
     def show
       smoothie = Smoothie.find(params[:id])
-      render json: smoothie.to_json
+      render json: smoothie.to_json( only: [:name, :id, :calories, :total_fat, :sugar, :fiber], :include => {:fruits => { :only => :name }})
     end
   end
 
