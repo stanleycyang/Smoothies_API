@@ -27,6 +27,42 @@
     </div>
   </div>
 
+  <div class="row text-center">
+     <%#Total fat%>
+     <div class="col-sm-4">
+       <div class="panel panel-primary">
+         <div class="panel-heading">
+          Fat
+         </div>
+         <div class="panel-body">
+           <h4 id="fat">NA</h5>
+         </div>
+       </div>
+     </div>
+     <%#Sugar%>
+     <div class="col-sm-4">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            Sugar
+          </div>
+          <div class="panel-body">
+           <h4 id="sugar">NA</h5>
+          </div>
+        </div>
+     </div>
+     <%#Fiber%>
+     <div class="col-sm-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            Fiber
+          </div>
+          <div class="panel-body">
+           <h4 id="fiber">NA</h5>
+          </div>
+        </div>
+     </div>
+  </div>
+
   <%#<div class="row">%>
     <%#<div class="container-fluid">%>
       <%#<div class="input-group">%>
@@ -40,29 +76,3 @@
 
 </div>
 
-<script type="text/javascript" charset="utf-8">
-  var list = $('ul.menu');
-  $.get( "http://localhost:3000/api/smoothies", function( data ) {
-      // Loops through the data, puts API data into the menu
-      $.each(data, function(index, item){
-        var tr = $('<tr/>')
-          .appendTo($('table.table'));
-
-        $('<td/>')
-          .text(item.id)
-          .appendTo(tr);
-
-        $('<td/>')
-          .text(item.name)
-          .appendTo(tr);
-
-         $('<td/>')
-          .text(item.calories)
-          .appendTo(tr);
-     });
-  }).fail(function(data, status,jqXHR) {
-    console.log(status);
-  });
-
-
-</script>
