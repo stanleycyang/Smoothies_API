@@ -22,7 +22,7 @@ module Api
     private
 
     def smoothie_params
-      params.require(:smoothie).permit(:name, :id, :calories, :total_fat, :sugar, :fiber)
+      params.permit(:name, :id, :calories, :total_fat, :sugar, :fiber)
     end
 
   end
