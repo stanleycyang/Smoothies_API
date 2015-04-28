@@ -1,5 +1,5 @@
   var list = $('ul.menu');
-  $.get( "http://localhost:3000/api/smoothies", function( data ) {
+  $.get( "https://agile-woodland-4847.herokuapp.com/api/smoothies", function( data ) {
       // Loops through the data, puts API data into the menu
       $.each(data, function(index, item){
         var tr = $('<tr/>')
@@ -24,7 +24,7 @@
   });
 
   $(document).on('click', '.smoothie', function(){
-      $.get("http://localhost:3000/api/smoothies/" + $(this).attr('id'), function(data){
+      $.get("https://agile-woodland-4847.herokuapp.com/api/smoothies/" + $(this).attr('id'), function(data){
         $("#fat").text(data.total_fat + 'g');
         $("#sugar").text(data.sugar + 'g');
         $("#fiber").text(data.fiber + 'g');
