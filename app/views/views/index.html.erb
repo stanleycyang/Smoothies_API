@@ -1,0 +1,68 @@
+<div class="container-fluid">
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <span class="glyphicon glyphicon-apple"></span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="row">
+    <div class="col-sm-3">
+        <img src="http://themissinformation.com/wp-content/uploads/2014/09/More-fruit-smoothies.jpg" alt="smoothie" class="img-circle img-responsive">
+    </div>
+    <div class="col-sm-9">
+      <table class="table table-striped">
+        <tbody>
+          <thead>
+            <th>IDs</th>
+            <th>Smoothies</th>
+            <th>Calories</th>
+          </thead>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <%#<div class="row">%>
+    <%#<div class="container-fluid">%>
+      <%#<div class="input-group">%>
+        <%#<input type="text" class="form-control" placeholder="Add new smoothie.." id="smoothie">%>
+        <%#<span class="input-group-btn">%>
+          <%#<button class="btn btn-default" id="add" type="button"><span class="glyphicon glyphicon-plus"></span></button>%>
+        <%#</span>%>
+      <%#</div>%>
+    <%#</div>%>
+  <%#</div>%>
+
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  var list = $('ul.menu');
+  $.get( "http://localhost:3000/api/smoothies", function( data ) {
+      // Loops through the data, puts API data into the menu
+      $.each(data, function(index, item){
+        var tr = $('<tr/>')
+          .appendTo($('table.table'));
+
+        $('<td/>')
+          .text(item.id)
+          .appendTo(tr);
+
+        $('<td/>')
+          .text(item.name)
+          .appendTo(tr);
+
+         $('<td/>')
+          .text(item.calories)
+          .appendTo(tr);
+     });
+  }).fail(function(data, status,jqXHR) {
+    console.log(status);
+  });
+
+
+</script>
