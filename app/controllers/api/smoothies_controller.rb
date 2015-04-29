@@ -8,15 +8,14 @@ module Api
     def show
       @smoothie = Smoothie.find(params[:id])
       render :show
-      #render json: smoothie.to_json( only: [:name, :id, :calories, :total_fat, :sugar, :fiber], :include => {:fruits => { :only => :name }})
     end
 
     def create
-      smoothie = Smoothie.new(smoothie_params)
+      @smoothie = Smoothie.new(smoothie_params)
       if smoothie.save
-        render json: smoothie, status: 201
+        render :show
       else
-        render json: {errors: smoothie.errors}, status: 422
+        render json: {errors: @smoothie.errors}, status: 422
       end
     end
 
