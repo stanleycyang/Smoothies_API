@@ -2,12 +2,17 @@ module Api
   class SmoothiesController < ApplicationController
     def index
       smoothies = Smoothie.all
-      render json: smoothies.to_json( only: [:name, :id, :calories])
+      render json: smoothies, only: [:name, :id, :calories]
+    end
+    def search
+      search_term = params[:s]
+      smoothies = Smoothie.where("name ILIKE ?","%#{search_term}%")
+      render json: smoothies
     end
 
     def show
       smoothie = Smoothie.find(params[:id])
-      render json: smoothie.to_json( only: [:name, :id, :calories, :total_fat, :sugar, :fiber], :include => {:fruits => { :only => :name }})
+      render json: smoothie,except: [:created_at, :updated_at], include: {fruits: { only: :name }}
     end
 
     def create
